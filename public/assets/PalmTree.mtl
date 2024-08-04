@@ -1,0 +1,37 @@
+// Created by Tree IT
+newmtl palm02
+Ka 1 1 1
+Kd 1 1 1
+Ks 0 0 0
+map_Kd palm02.png
+
+newmtl palm top
+Ka 1 1 1
+Kd 1 1 1
+Ks 0 0 0
+map_Kd palm top.png
+
+newmtl frond stem
+Ka 1 1 1
+Kd 1 1 1
+Ks 0 0 0
+map_Kd frond stem.png
+
+newmtl coconut 2
+Ka 1 1 1
+Kd 1 1 1
+Ks 0 0 0
+map_Kd coconut 2.png
+
+newmtl coconut palm leaf 1
+Ka 1 1 1
+Kd 1 1 1
+Ks 0 0 0
+map_Kd coconut palm leaf 1.png
+
+newmtl coconut palm leaf 2
+Ka 1 1 1
+Kd 1 1 1
+Ks 0 0 0
+map_Kd coconut palm leaf 2.png
+

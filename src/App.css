@@ -1,0 +1,51 @@
+
+body {
+  background : rgb(128, 77, 11);
+  background-size: 100vw 100vh;
+  padding: 20px;
+}
+
+.tree-area{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 65vh;
+}
+.home{
+  background: rgb(92, 52, 0);
+  background-repeat: no-repeat;
+  background-size: 100vw;
+}
+.control {
+  position: fixed;
+  bottom: 10%;
+}
+
+.leaves{
+  position:absolute;
+}
+.leafpng{
+  position: relative;
+  width: 60px;
+  height: 60px;
+  animation: fly-right 7s linear infinite;
+  animation-duration: calc(60s / var(--i));
+}
+@keyframes fly-right {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(110vw);
+  }
+}
+
+@keyframes fly-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-110vw);
+  }
+}
