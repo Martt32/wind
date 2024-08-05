@@ -18,7 +18,7 @@ const TreeModel = ({ objUrl, mtlUrl, windSpeed, trimming }) => {
   useEffect(() => {
     if (treeRef.current && windSpeed < 75) {
       gsap.to(treeRef.current.rotation, {
-        y: Math.sin(windSpeed - trimming) * 0.6, // Adjust the multiplier as needed
+        y: Math.sin(windSpeed - trimming) * 0.4, // Adjust the multiplier as needed
         repeat: -1,
         yoyo: true,
         duration: 1,

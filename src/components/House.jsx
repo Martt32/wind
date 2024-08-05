@@ -24,7 +24,7 @@ const HouseAnime = ({ windSpeed, precipitation }) => {
 
 
   return (
-    <div style={{ position: 'relative', width: '300px', height: '300px' }}>
+    <div style={{ position: 'relative', width: '500px', height: '500px' }}>
       {
         windSpeed > 75 ?
         <StaticLottie  animationData={RooflessHouse} loop={false} />
