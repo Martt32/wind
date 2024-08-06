@@ -1,36 +1,84 @@
-import React, { useEffect, useRef, useMemo } from 'react';
-import Lottie from 'lottie-react';
-import animationData from '../assets/Animation - 1720291997875.json'
-import StaticLottie from './StaticHouse'
-import rainAnimationData from '../assets/Rain';
+import React, { useEffect, useState } from 'react';
+import Lottie from 'react-lottie';
+import animationData from '../assets/Animation - 1720291997875.json';
 
-const HouseAnime = ({ windSpeed, precipitation }) => {
-  const lottieRef = useRef();
-  const rainRef = useRef();
-  const branchRef = useRef();
-
-
+const WindAnimation = ({ windSpeed }) => {
+  const [animationSpeed, setAnimationSpeed] = useState(1);
 
   useEffect(() => {
-    if (rainRef.current) {
-      const rainSpeed = precipitation / 100; // Normalize precipitation to a speed value
-      rainRef.current.setSpeed(rainSpeed);
-    }
-    // const totalFrames = animationData.op;
-    // lottieRef.current.goToAndStop(totalFrames, true)
-  }, [precipitation]);
+    // Adjust the animation speed based on windSpeed
+    // You can customize this logic as per your requirements
+    const newSpeed = windSpeed / 50;
+    setAnimationSpeed(newSpeed);
+  }, [windSpeed]);
 
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  };
 
   return (
-    <div style={{ position: 'relative', width: '500px', height: '500px' }}>
-      
-        <Lottie lottieRef={lottieRef} speed={windSpeed} animationData={animationData} loop={true} />
-      
-    </div>
+    <Lottie 
+      options={defaultOptions}
+      speed={animationSpeed}
+      height={400}
+      width={400}
+    />
   );
 };
 
-export default HouseAnime;
+export default WindAnimation;
+
+
+
+
+
+// import React, { useEffect, useRef, useMemo, useState } from 'react';
+// import Lottie from 'lottie-react';
+// import animationData from '../assets/Animation - 1720291997875.json'
+// import StaticLottie from './StaticHouse'
+// import rainAnimationData from '../assets/Rain';
+
+// const HouseAnime = ({ windSpeed, precipitation }) => {
+//   const lottieRef = useRef();
+//   const rainRef = useRef();
+
+//   const [animationSpeed, setAnimationSpeed] = useState(1);
+
+//   useEffect(() => {
+//     // Adjust the animation speed based on windSpeed
+//     // You can customize this logic as per your requirements
+//     const newSpeed = windSpeed / 10;
+//     setAnimationSpeed(newSpeed);
+//   }, [windSpeed]);
+
+//   useEffect(() => {
+//     if (rainRef.current) {
+//       const rainSpeed = precipitation / 100; // Normalize precipitation to a speed value
+//       rainRef.current.setSpeed(rainSpeed);
+//     }
+//     // const totalFrames = animationData.op;
+//     // lottieRef.current.goToAndStop(totalFrames, true)
+//   }, [precipitation]);
+
+
+//   return (
+//     <div style={{ position: 'relative', width: '500px', height: '500px' }}>
+      
+//         <Lottie lottieRef={lottieRef} speed={animationSpeed} animationData={animationData} loop={true} />
+      
+//     </div>
+//   );
+// };
+
+// export default HouseAnime;
+
+
+
 
 
 

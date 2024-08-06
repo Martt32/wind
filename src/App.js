@@ -90,7 +90,8 @@ const App = () => {
 
           {
             treeType === 'Oak' ?
-            <TreeComponent windSpeed={windSpeed} precipitation={precipitation}/>
+            <TreeComponent windSpeed={windSpeed < 75 ? windSpeed : 0} 
+            trimming={trimming} precipitation={precipitation}/>
              : 
              <Canvas   camera={{ position: [5, 10, 20], fov: 50 }}>
              <ambientLight intensity={0.8} />
