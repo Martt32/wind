@@ -35,11 +35,11 @@ const HouseAnime = ({ windSpeed, precipitation }) => {
           <Lottie lottieRef={rainRef} animationData={rainAnimationData} loop={true} />
         </div>
       )}
-      {windSpeed > 75 &&  (
+      {/* {windSpeed > 75 &&  (
         <div style={{ position: 'absolute', top: 0, left: 0, width: '120%', height: '120%' }}>
           <Lottie lottieRef={branchRef} animationData={branch} loop={true} />
         </div>
-      )}
+      )} */}
     </div>
   );
 };

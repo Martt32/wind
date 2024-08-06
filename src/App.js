@@ -17,12 +17,27 @@ import LeavesAnimation from './components/LeavesAnimation';
 
 const App = () => {
   const [windSpeed, setWindSpeed] = useState(1);
-  const [treeType, setTreeType] = useState('oak');
+  const [treeType, setTreeType] = useState('Oak');
   const [trimming, setTrimming] = useState(0);
   const [precipitation, setPrecipitation] = useState(0);
 
   const [direction, setDirection] = useState([1, 0]);
-
+  const Tree = () =>{
+    if(treeType === 'Oak'){
+      <TreeComponent windSpeed={windSpeed} precipitation={precipitation}/>
+    }else{
+    <Canvas   camera={{ position: [5, 10, 20], fov: 50 }}>
+    <ambientLight intensity={0.8} />
+    <directionalLight position={[10, 10, 10]} intensity={1} />
+    <TreeModel 
+      objUrl={`./assets/${treeType}Tree.obj`} 
+      mtlUrl={`./assets/${treeType}Tree.mtl` }
+      windSpeed={windSpeed < 75 ? windSpeed : 0} 
+      trimming={trimming}
+      />
+    <OrbitControls />
+  </Canvas>}
+  }
   const handleSliderChange = (event) => {
     const value = event.target.value;
     if (value >= 90 && value <= 180) {
@@ -64,6 +79,7 @@ const App = () => {
       <OrbitControls />
     </Canvas> */}
     <House windSpeed={windSpeed} precipitation={precipitation}/>
+    
         </div>
       <div>
         <div className={`transform rotate-${rotate} `} style={{ transition:'.8s', width: '50vw', height:'100vh' }}>
@@ -71,17 +87,23 @@ const App = () => {
         { windSpeed > 37 &&
           <LeavesAnimation direction={direction} />
           }
-      <Canvas   camera={{ position: [5, 10, 20], fov: 50 }}>
-        <ambientLight intensity={0.8} />
-        <directionalLight position={[10, 10, 10]} intensity={1} />
-        <TreeModel 
-          objUrl={`./assets/${treeType}Tree.obj`} 
-          mtlUrl={`./assets/${treeType}Tree.mtl` }
-          windSpeed={windSpeed < 75 ? windSpeed : 0} 
-          trimming={trimming}
-          />
-        <OrbitControls />
-      </Canvas>
+
+          {
+            treeType === 'Oak' ?
+            <TreeComponent windSpeed={windSpeed} precipitation={precipitation}/>
+             : 
+             <Canvas   camera={{ position: [5, 10, 20], fov: 50 }}>
+             <ambientLight intensity={0.8} />
+             <directionalLight position={[10, 10, 10]} intensity={1} />
+             <TreeModel 
+               objUrl={`./assets/${treeType}Tree.obj`} 
+               mtlUrl={`./assets/${treeType}Tree.mtl` }
+               windSpeed={windSpeed < 75 ? windSpeed : 0} 
+               trimming={trimming}
+               />
+             <OrbitControls />
+           </Canvas>
+          }
           </div>
       </div>
           </div>

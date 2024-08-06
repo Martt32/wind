@@ -1,6 +1,8 @@
 
 body {
-  background : rgb(128, 77, 11) url('./assets/background.jpg');
+  background : rgb(128, 77, 11)
+   /* url('./assets/background.jpg') */
+   ;
   background-size: 100vw 100vh;
   padding: 20px;
 }

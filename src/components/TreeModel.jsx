@@ -3,7 +3,7 @@ import React, { useRef, useEffect } from 'react';
 import { useLoader } from '@react-three/fiber';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
 import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader';
-import { TextureLoader } from 'three';
+// import { TextureLoader } from 'three';
 import gsap from 'gsap';
 
 const TreeModel = ({ objUrl, mtlUrl, windSpeed, trimming }) => {
@@ -14,6 +14,17 @@ const TreeModel = ({ objUrl, mtlUrl, windSpeed, trimming }) => {
   });
 
   const treeRef = useRef();
+
+
+  function calculateMovement(windSpeed, trimming){
+    const nwindSpeed = (windSpeed - 1) / (120 - 1)
+    const ntrimming = (trimming - 10) / (50 - 10)
+
+    const sumnValues = nwindSpeed + ntrimming;
+
+    const movementValues = 4 - (sumnValues * 3 / 2)
+    return Math.min(4, Math.max(1,movementValues))
+  }
 
   useEffect(() => {
     if (treeRef.current && windSpeed < 75) {
