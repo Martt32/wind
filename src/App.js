@@ -67,19 +67,6 @@ const App = () => {
   return (
     <div className='flex flex-col justify-center items-center'>
       <div className='flex p-5'>
-        <div className=''>
-
-      {/* <Canvas style={{ width: '50vw', height:'100vh' }} camera={{ position: [0, 0, 5], fov: 60 }}>
-      <ambientLight intensity={0.5} />
-      <pointLight position={[10, 10, 10]} />
-      <Suspense fallback={null}>
-        <House />
-      </Suspense>
-      <OrbitControls />
-    </Canvas> */}
-    <House windSpeed={windSpeed} precipitation={precipitation}/>
-    
-        </div>
       <div>
         <div className={`transform rotate-${rotate} `} style={{ transition:'.8s', width: '50vw', height:'100vh' }}>
 
@@ -107,6 +94,19 @@ const App = () => {
            </Canvas>
           </div>
       </div>
+        <div className=''>
+
+      {/* <Canvas style={{ width: '50vw', height:'100vh' }} camera={{ position: [0, 0, 5], fov: 60 }}>
+      <ambientLight intensity={0.5} />
+      <pointLight position={[10, 10, 10]} />
+      <Suspense fallback={null}>
+        <House />
+      </Suspense>
+      <OrbitControls />
+    </Canvas> */}
+    <House windSpeed={windSpeed} precipitation={precipitation}/>
+    
+        </div>
           </div>
       {/* Add controls to change wind speed */}
       <div className='control flex font-bold justify-center items-center space-x-6 text-white p-4 bg-darkOpac rounded-lg'>
@@ -139,9 +139,9 @@ const App = () => {
           <select value={trimming} className='text-black' onChange={(e) => setTrimming(e.target.value)}>
             <option value=''>0%</option>
             <option value='ten'>10%</option>
-            <option value='thirty'>20%</option>
+            <option value='twenty'>20%</option>
             <option value='thirty'>30%</option>
-            <option value='thirty'>40%</option>
+            <option value='forty'>40%</option>
             <option value='fifty'>50%</option>
           </select>
         </label>
