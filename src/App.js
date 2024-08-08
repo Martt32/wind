@@ -18,7 +18,7 @@ import LeavesAnimation from './components/LeavesAnimation';
 const App = () => {
   const [windSpeed, setWindSpeed] = useState(1);
   const [treeType, setTreeType] = useState('Oak');
-  const [trimming, setTrimming] = useState(0);
+  const [trimming, setTrimming] = useState('');
   const [precipitation, setPrecipitation] = useState(0);
 
   const [direction, setDirection] = useState([1, 0]);
@@ -88,23 +88,24 @@ const App = () => {
           <LeavesAnimation direction={direction} />
           }
 
-          {
-            treeType === 'Oak' ?
-            <TreeComponent windSpeed={windSpeed < 75 ? windSpeed : 0} 
-            trimming={trimming} precipitation={precipitation}/>
-             : 
              <Canvas   camera={{ position: [5, 10, 20], fov: 50 }}>
              <ambientLight intensity={0.8} />
              <directionalLight position={[10, 10, 10]} intensity={1} />
-             <TreeModel 
-               objUrl={`./assets/${treeType}Tree.obj`} 
-               mtlUrl={`./assets/${treeType}Tree.mtl` }
+             {trimming === '' ? <TreeModel 
+               objUrl={`./assets/tree/${treeType}.obj`} 
+               mtlUrl={`./assets/tree/${treeType}.mtl`}
+               windSpeed={windSpeed < 75 ? windSpeed : 0} 
+               trimming={trimming}
+               /> :
+               <TreeModel 
+               objUrl={`./assets/trimmed/${treeType}${trimming}.obj`} 
+               mtlUrl={`./assets/trimmed/${treeType}${trimming}.mtl`}
                windSpeed={windSpeed < 75 ? windSpeed : 0} 
                trimming={trimming}
                />
+               }
              <OrbitControls />
            </Canvas>
-          }
           </div>
       </div>
           </div>
@@ -137,12 +138,12 @@ const App = () => {
         <label className='flex flex-col space-y-4 p-4'>
           Trimming:
           <select value={trimming} className='text-black' onChange={(e) => setTrimming(e.target.value)}>
-            <option value={0}>0%</option>
-            <option value={10}>10%</option>
-            <option value={20}>20%</option>
-            <option value={30}>30%</option>
-            <option value={40}>40%</option>
-            <option value={50}>50%</option>
+            <option value=''>0%</option>
+            <option value='ten'>10%</option>
+            <option value='twenty'>20%</option>
+            <option value='thirty'>30%</option>
+            <option value='fourty'>40%</option>
+            <option value='fifty'>50%</option>
           </select>
         </label>
       </div>    
