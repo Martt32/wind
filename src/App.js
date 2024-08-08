@@ -64,7 +64,6 @@ const App = () => {
     rotate = 90
     
   }
-
   return (
     <div className='flex flex-col justify-center items-center'>
       <div className='flex p-5'>
@@ -140,9 +139,9 @@ const App = () => {
           <select value={trimming} className='text-black' onChange={(e) => setTrimming(e.target.value)}>
             <option value=''>0%</option>
             <option value='ten'>10%</option>
-            <option value='twenty'>20%</option>
+            <option value='thirty'>20%</option>
             <option value='thirty'>30%</option>
-            <option value='fourty'>40%</option>
+            <option value='thirty'>40%</option>
             <option value='fifty'>50%</option>
           </select>
         </label>
