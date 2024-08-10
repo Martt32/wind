@@ -3,6 +3,8 @@ import './App.css'
 import './main.css'
 import TreeComponent from './components/TreeComponent'
 import React, { useRef, useEffect, useState } from 'react';
+import Lottie from 'lottie-react';
+import rainAnimationData from './assets/Rain';
 import { Canvas, useFrame, useLoader } from '@react-three/fiber';
 import * as THREE from 'three';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
@@ -64,11 +66,21 @@ const App = () => {
     rotate = 90
     
   }
+  const rainRef = useRef();
+  useEffect(() => {
+    if (rainRef.current) {
+      const rainSpeed = precipitation / 100; // Normalize precipitation to a speed value
+      rainRef.current.setSpeed(rainSpeed);
+    }
+    // const totalFrames = animationData.op;
+    // lottieRef.current.goToAndStop(totalFrames, true)
+  }, [precipitation]);
+
   return (
     <div className='flex flex-col justify-center items-center'>
       <div className='flex p-5'>
       <div>
-        <div className={`transform rotate-${rotate} `} style={{ transition:'.8s', width: '50vw', height:'100vh' }}>
+        <div className={`transform rotate-${rotate} relative`} style={{ transition:'.8s', width: '50vw', height:'100vh' }}>
 
         { windSpeed > 37 &&
           <LeavesAnimation direction={direction} />
@@ -90,8 +102,13 @@ const App = () => {
                trimming={trimming}
                />
                }
-             <OrbitControls />
-           </Canvas>
+                    <OrbitControls />
+                    </Canvas>
+               {precipitation > 0 && (
+                  <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}>
+                    <Lottie lottieRef={rainRef} animationData={rainAnimationData} loop={true} />
+                  </div>
+                )}
           </div>
       </div>
         <div className=''>
