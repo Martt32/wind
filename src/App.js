@@ -130,13 +130,19 @@ const App = () => {
 
       <div>
         <label className='flex flex-col space-y-4 p-4'>
-          Wind Speed: {windSpeed} mph
+          Force: {windSpeed > 30 ? windSpeed - 30 : windSpeed} F
           <input
         type="range"
-        min="1"
+        min="30"
         max="120"
         onChange={(e) => setWindSpeed(Number(e.target.value))}
       />
+        </label>
+      </div>
+      <div>
+        <label className='flex flex-col space-y-4 p-4'>
+          Wind Speed: {windSpeed} mph
+        
         </label>
       </div>
       <Compass direction={direction}/>
@@ -160,6 +166,10 @@ const App = () => {
             <option value='thirty'>30%</option>
             <option value='forty'>40%</option>
             <option value='fifty'>50%</option>
+            <option value='sixty'>60%</option>
+            <option value='seventy'>70%</option>
+            <option value='eighty'>80%</option>
+            <option value='ninety'>90%</option>
           </select>
         </label>
       </div>    

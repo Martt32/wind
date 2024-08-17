@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useMemo } from 'react';
 import Lottie from 'lottie-react';
+import rainAnimationData from '../assets/Rain';
 import House from '../assets/House.json'
 import RooflessHouse from '../assets/RooflessHouse.json'
 import StaticLottie from './StaticHouse'
-import rainAnimationData from '../assets/Rain';
 import branch from '../assets/branch.json'
 
 const HouseAnime = ({ windSpeed, precipitation }) => {
